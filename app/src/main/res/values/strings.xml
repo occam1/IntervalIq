@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Interval IQ</string>
+    <string name="working_interval_text">Interval: %1$s</string>
+    <string name="contrast_interval_text">Interval: %1$s</string>
+</resources>
