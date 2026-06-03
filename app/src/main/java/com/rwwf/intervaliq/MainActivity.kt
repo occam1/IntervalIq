@@ -12,6 +12,8 @@ import androidx.core.os.postDelayed
 import java.util.Locale
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
+
 class MainActivity : AppCompatActivity() {
     private lateinit var speechManager: SpeechManager
     private lateinit var toneGenerator: ToneGenerator
@@ -26,7 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         val workingInterval = findViewById<TextView>(R.id.working_interval)
         val contrastInterval = findViewById<TextView>(R.id.contrast_interval)
+        val pauseButton = findViewById<Button>(R.id.pause_button)
+        var isPaused = false;
 
+            pauseButton.setOnClickListener {
+            if (isPaused) {
+                trainingEngine.resume()
+                pauseButton.text = "Pause"
+                isPaused = false
+            } else {
+                trainingEngine.pause()
+                pauseButton.text = "Resume"
+                isPaused = true
+            }
+        }
 
         toneGenerator = ToneGenerator()
 

@@ -40,6 +40,11 @@
             android:padding="24dp"
             android:text="@string/contrast_interval_text"/>
 
+        <Button
+            android:id="@+id/pause_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pause" />
 
 
     </LinearLayout>

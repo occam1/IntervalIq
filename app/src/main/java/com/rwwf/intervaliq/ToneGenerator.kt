@@ -30,11 +30,14 @@ class ToneGenerator {
 
             val angle =
                 2.0 * PI * i * frequency / SAMPLE_RATE
+            val fundamental = sin(angle)
+            val octave = sin(angle * 2.0) * .3
 
-            val value =
-                sin(angle) *
-                        AMPLITUDE *
-                        envelope(i, sampleCount)
+            val value = (fundamental + octave) * AMPLITUDE * envelope(i, sampleCount)
+           // val value =
+            //    sin(angle) *
+            //            AMPLITUDE *
+            //            envelope(i, sampleCount)
 
             samples[i] =
                 (value * Short.MAX_VALUE)

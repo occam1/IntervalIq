@@ -82,4 +82,15 @@ class TrainingEngine(
             rootIndex = 0
         }
     }
+    fun pause() {
+        isRunning = false
+        handler.removeCallbacksAndMessages(null)
+    }
+
+    fun resume() {
+        if (!isRunning) {
+            isRunning = true
+            playCurrentTrainingUnit()
+        }
+    }
 }
