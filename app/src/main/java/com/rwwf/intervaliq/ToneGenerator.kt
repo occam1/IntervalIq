@@ -62,6 +62,11 @@ class ToneGenerator {
 
         audioTrack.write(samples, 0, samples.size)
         audioTrack.play()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            audioTrack.stop()
+            audioTrack.release()
+        }, durationMs.toLong() + 100)
     }
 
     internal fun midiToFrequency(

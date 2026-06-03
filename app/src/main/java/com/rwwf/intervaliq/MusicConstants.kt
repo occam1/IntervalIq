@@ -14,5 +14,18 @@ object MusicConstants {
     const val HIGHEST_NOTE = 82    // A#5 / Bb5
 
     val ROOTS = (C4..B4).toList()
-
+     val INTERVALS = listOf(
+        EarInterval("Unison", 0),
+        EarInterval("Perfect Fifth", 7),
+        EarInterval("Major Second", 2),
+        EarInterval("Major Sixth", 9),
+        EarInterval("Major Third", 4),
+        EarInterval("Major Seventh", 11),
+        EarInterval("Tritone", 6),
+        EarInterval("Minor Second", 1),
+        EarInterval("Minor Sixth", 8),
+        EarInterval("Minor Third", 3),
+        EarInterval("Minor Seventh", 10),
+        EarInterval("Perfect Fourth", 5)
+    )
 }
