@@ -1,12 +1,14 @@
 package com.rwwf.intervaliq
 
 import android.os.Bundle
+
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.TextView
 import android.speech.tts.TextToSpeech
+import androidx.core.os.postDelayed
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -32,8 +34,8 @@ class MainActivity : AppCompatActivity() {
        // enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val workingIntervalData = intervals[1]
-        val contrastIntervalData = intervals[4]
+        val workingIntervalData = intervals[0]
+        val contrastIntervalData = intervals[1]
 
        val workingInterval = findViewById<TextView>(R.id.working_interval)
        val contrastInterval = findViewById<TextView>(R.id.contrast_interval)
@@ -53,6 +55,14 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
+
+        val toneGenerator = ToneGenerator()
+        toneGenerator.playMelodicInterval(   MusicConstants.C4,
+            EarInterval(
+                "Perfect Fifth",
+                7)
+        )
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
