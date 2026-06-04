@@ -31,7 +31,7 @@ class ToneGenerator {
             val angle =
                 2.0 * PI * i * frequency / SAMPLE_RATE
             val fundamental = sin(angle)
-            val octave = sin(angle * 2.0) * .3
+            val octave = sin(angle * 2.0) * .1
 
             val value = (fundamental + octave) * AMPLITUDE * envelope(i, sampleCount)
            // val value =
@@ -89,7 +89,18 @@ class ToneGenerator {
                 rootMidi + interval.semitones,
                 1000
             )
-        }, 1200)
+        }, 800)
+    }
+
+    fun playHarmonicInterval(
+        rootMidi: Int,
+        interval: EarInterval
+    ) {
+        playNote(rootMidi, 1500)
+        playNote(rootMidi + interval.semitones,
+                1500
+            )
+
     }
 
     private fun envelope(

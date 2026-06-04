@@ -1,5 +1,15 @@
 package com.rwwf.intervaliq
-
+// TODO: Exclude Unison from default working intervals via configuration
+// TODO: Save TrainingEngine state to SharedPreferences
+// TODO: Keep main screen minimal; move interval, root, and speech/playback options to config screens.
+// TODO: Do we need to shorten the duration of the lower note of the interval
+// TODO: Add Perfect 8th as a working interval (extended notes?)9,11,13
+// TODO: play root and working note closer together?
+// TODO: example song phrases for intervals - eyes of texas 6th reveille 4th etc
+// TODO: running time timer
+// TODO: earbud mute => pause/resume
+// TODO: harmonic
+// TODO: Investigate Bluetooth earbud play/pause button support.
 object MusicConstants {
     const val C3 = 48
     const val C4 = 60
@@ -26,6 +36,7 @@ object MusicConstants {
         EarInterval("Minor Sixth", 8),
         EarInterval("Minor Third", 3),
         EarInterval("Minor Seventh", 10),
-        EarInterval("Perfect Fourth", 5)
+        EarInterval("Perfect Fourth", 5),
+        EarInterval("Octave", 12)
     )
 }

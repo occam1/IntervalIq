@@ -13,7 +13,7 @@ class TrainingEngine(
     private val roots = listOf(MusicConstants.C4)
 
 
-
+    private var isMelodic = true
     private var rootIndex = 0
     private var workingIndex = 1
     private var contrastIndex = 0
@@ -40,12 +40,13 @@ class TrainingEngine(
         onIntervalsChanged(working, contrast)
         speechManager.speak(working.name)
 
-        handler.postDelayed({
-            toneGenerator.playMelodicInterval(root, working)
-        }, 1500)
 
         handler.postDelayed({
-            toneGenerator.playMelodicInterval(root, working)
+            playInterval(root, working)
+        },1500)
+
+        handler.postDelayed({
+            playInterval(root, working)
         }, 4200)
 
         handler.postDelayed({
@@ -62,7 +63,7 @@ class TrainingEngine(
         handler.postDelayed({
             advanceIndexes()
             playCurrentTrainingUnit()
-        }, 13000)
+        }, 14000)
     }
 
     private fun advanceIndexes() {
@@ -82,6 +83,20 @@ class TrainingEngine(
             rootIndex = 0
         }
     }
+
+
+    private fun playInterval(
+        root: Int,
+        interval: EarInterval
+    ) {
+        if (isMelodic) {
+            toneGenerator.playMelodicInterval(root, interval)
+        } else {
+            toneGenerator.playHarmonicInterval(root, interval)
+        }
+    }
+
+
     fun pause() {
         isRunning = false
         handler.removeCallbacksAndMessages(null)
